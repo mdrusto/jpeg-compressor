@@ -59,7 +59,12 @@ set(BIN_DIRECTORY "bin")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${BIN_DIRECTORY})
 
-add_executable(jpge ${BASISU_SRC_LIST})
+add_library(jpge jpge.cpp tga2jpg.cpp timer.cpp)
 
-install(TARGETS jpge DESTINATION bin)
+target_include_directories(jpge PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
+add_library(jpgd jpgd.cpp)
+
+target_include_directories(jpgd PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+#install(TARGETS jpge DESTINATION bin)
